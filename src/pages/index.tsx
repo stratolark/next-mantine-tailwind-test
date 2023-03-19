@@ -18,7 +18,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <HeaderMegaMenu />
-      <main className='flex flex-col justify-between items-center p-24 min-h-screen bg-black text-white'>
+      <main className='hidden md:flex flex-col justify-between items-center p-24 min-h-screen bg-black text-white'>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;

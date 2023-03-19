@@ -4,10 +4,8 @@ import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { emotionCache } from "@/emotionCache";
 
-// export const myCache = createEmotionCache({ key: "mantine", prepend: false });
-
 export default function App(props: AppProps) {
-  const { Component, pageProps } = props;
+  const { Component } = props; // only destructuring Component from props as pageProps has the type any triggering a TS error
 
   return (
     <>
@@ -27,7 +25,8 @@ export default function App(props: AppProps) {
           /** Put your mantine theme override here */
           colorScheme: "dark",
         }}>
-        <Component {...pageProps} />
+        {/* pass the pageProps down to the component */}
+        <Component {...props.pageProps} />
       </MantineProvider>
     </>
   );

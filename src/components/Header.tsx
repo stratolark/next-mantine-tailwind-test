@@ -17,8 +17,8 @@ import {
   Collapse,
   ScrollArea,
   rem,
+  type CSSObject, // this is the type
 } from "@mantine/core";
-import { MantineLogo } from "@mantine/ds";
 import { useDisclosure } from "@mantine/hooks";
 import {
   IconNotification,
@@ -41,37 +41,51 @@ const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     fontWeight: 500,
     fontSize: theme.fontSizes.sm,
-
     [theme.fn.smallerThan("sm")]: {
       height: rem(42),
       display: "flex",
       alignItems: "center",
       width: "100%",
     },
-
-    ...theme.fn.hover({
+    // [`@media (hover: hover)`]: { // this works too without the type cast
+    //   "&:hover": {
+    //     backgroundColor:
+    //       theme.colorScheme === "dark"
+    //         ? theme.colors.dark[6]
+    //         : theme.colors.gray[0],
+    //   },
+    // },
+    // "&:hover": { // this works too without the type cast
+    //   backgroundColor:
+    //     theme.colorScheme === "dark"
+    //       ? theme.colors.dark[6]
+    //       : theme.colors.gray[0],
+    // },
+    ...(theme.fn.hover({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[6]
           : theme.colors.gray[0],
-    }),
+    }) as CSSObject),
   },
-
   subLink: {
     width: "100%",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
     borderRadius: theme.radius.md,
-
-    ...theme.fn.hover({
+    ...(theme.fn.hover({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
           : theme.colors.gray[0],
-    }),
-
+    }) as CSSObject),
+    // "&:hover": { // this works too without the type cast
+    //   backgroundColor:
+    //     theme.colorScheme === "dark"
+    //       ? theme.colors.dark[7]
+    //       : theme.colors.gray[0],
+    // },
     "&:active": theme.activeStyles,
   },
-
   dropdownFooter: {
     backgroundColor:
       theme.colorScheme === "dark"
@@ -85,13 +99,11 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
     }`,
   },
-
   hiddenMobile: {
     [theme.fn.smallerThan("sm")]: {
       display: "none",
     },
   },
-
   hiddenDesktop: {
     [theme.fn.largerThan("sm")]: {
       display: "none",
