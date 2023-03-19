@@ -160,7 +160,7 @@ export function HeaderMegaMenu() {
     <Box pb={120}>
       <Header height={60} px='md'>
         <Group position='apart' sx={{ height: "100%" }}>
-          <MantineLogo size={30} />
+          <IconBook size={30} />
 
           <Group
             sx={{ height: "100%" }}
